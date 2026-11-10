@@ -1,0 +1,281 @@
+import { useEffect, useRef, useState } from "react";
+import "./App.css";
+import usePrestadores from "./hooks/usePrestadores";
+import categorias from "./constants/categorias";
+import Cabecalho from "./components/Cabecalho";
+import CardPrestador from "./components/CardPrestador";
+import { normalizar } from "./utils/normalizar";
+import Rodape from "./components/Rodape";
+import Hero from "./components/Hero";
+import BannerPrestador from "./components/BannerPrestador";
+import JanelaFormulario from "./components/JanelaFormulario";
+
+
+function App() {
+  const dialogRef = useRef(null);
+  const [busca, setBusca] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [categoria, setCategoria] = useState("Todos");
+  const [somenteMelhores, setSomenteMelhores] = useState(false);
+  const [somenteFavoritos, setSomenteFavoritos] = useState(false);
+  const [favoritos, setFavoritos] = useState([]);
+  const [ordenacao, setOrdenacao] = useState("avaliacao");
+  const [modal, setModal] = useState(null);
+  const [profissionalSelecionado, setProfissionalSelecionado] = useState(null);
+  const [tipoCadastro, setTipoCadastro] = useState("cliente");
+  const [cadastroDemonstrado, setCadastroDemonstrado] = useState(false);
+  const [mostrarContato, setMostrarContato] = useState(false);
+
+  useEffect(() => {
+    if (!modal) return;
+    const dialog = dialogRef.current;
+    const previous = document.activeElement;
+    const overflow = document.body.style.overflow;
+    if (dialog && !dialog.open) dialog.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      if (dialog?.open) dialog.close();
+      document.body.style.overflow = overflow;
+      if (previous instanceof HTMLElement) previous.focus();
+    };
+  }, [modal]);
+
+  const {prestadores} = usePrestadores();
+
+  const listaFiltrada = prestadores
+    .filter((profissional) => {
+      const textoBusca = normalizar(
+        `${profissional.nome} ${profissional.categoria} ${profissional.descricao}`
+      );
+      const correspondeBusca = textoBusca.includes(normalizar(busca));
+      const correspondeCidade = normalizar(
+        profissional.regiao
+      ).includes(normalizar(cidade));
+      const correspondeCategoria =
+        categoria === "Todos" ||
+        profissional.categoria === categoria;
+      const correspondeNota =
+        !somenteMelhores || profissional.nota >= 4.8;
+      const correspondeFavorito =
+        !somenteFavoritos || favoritos.includes(profissional.id);
+      return (
+        correspondeBusca &&
+        correspondeCidade &&
+        correspondeCategoria &&
+        correspondeNota &&
+        correspondeFavorito
+      );
+    })
+    .sort((a, b) => {
+      if (ordenacao === "preco") {
+        return a.preco - b.preco;
+      }
+      if (ordenacao === "nome") {
+        return a.nome.localeCompare(b.nome, "pt-BR");
+      }
+      return b.nota - a.nota;
+    });
+  function alternarFavorito(id) {
+    setFavoritos((atuais) =>
+      atuais.includes(id)
+        ? atuais.filter((favoritoId) => favoritoId !== id)
+        : [...atuais, id]
+    );
+  }
+  function limparFiltros() {
+    setBusca("");
+    setCidade("");
+    setCategoria("Todos");
+    setSomenteMelhores(false);
+    setSomenteFavoritos(false);
+    setOrdenacao("avaliacao");
+  }
+
+  function abrirCadastro(tipo) {
+    setTipoCadastro(tipo);
+    setCadastroDemonstrado(false);
+    setModal("cadastro");
+  }
+
+  function abrirPerfil(profissional) {
+    setProfissionalSelecionado(profissional);
+    setMostrarContato(false);
+    setModal("perfil");
+  }
+
+  function irParaProfissionais() {
+    document.getElementById("profissionais")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+  function realizarBusca(evento) {
+    evento.preventDefault();
+    irParaProfissionais();
+  }
+  return (
+    <>
+      <Cabecalho
+        cidade={cidade}
+        abrirCadastro={abrirCadastro}
+      />
+
+      <main className="conteudo-principal">
+        <Hero
+          irParaProfissionais={irParaProfissionais}
+        />
+
+        <form className="barra-busca" onSubmit={realizarBusca}>
+          <label className="campo-busca">
+            <span aria-hidden="true">⌕</span>
+            <input
+              type="search"
+              placeholder="Qual serviço você precisa?"
+              aria-label="Pesquisar serviço ou profissional"
+              value={busca}
+              onChange={(evento) => setBusca(evento.target.value)}
+            />
+          </label>
+
+          <label className="campo-busca campo-cidade">
+            <span aria-hidden="true">⌖</span>
+            <input
+              placeholder="Cidade ou região"
+              aria-label="Cidade ou região"
+              value={cidade}
+              onChange={(evento) => setCidade(evento.target.value)}
+            />
+          </label>
+          <button className="botao botao-principal" type="submit">
+            Buscar →
+          </button>
+        </form>
+
+        <section className="secao-categorias">
+          <div className="titulo-secao">
+            <h2>O que precisa resolver?</h2>
+            <p>Um profissional para cada necessidade.</p>
+          </div>
+
+          <div className="lista-categorias">
+            {categorias.map((item) => (
+              <button
+                key={item.nome}
+                className={`categoria ${
+                  categoria === item.nome ? "categoria-ativa" : ""
+                }`}
+                onClick={() => setCategoria(item.nome)}
+                aria-pressed={categoria === item.nome}
+              >
+                <span className="categoria-icone" aria-hidden="true">
+                  {item.icone}
+                </span>
+                <span>{item.nome}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section id="profissionais" className="secao-profissionais">
+          <div className="titulo-secao">
+            <div>
+              <h2>Encontre seu próximo profissional</h2>
+              <p>
+                {listaFiltrada.length} profissionais encontrados
+                · dados demonstrativos
+              </p>
+            </div>
+            <span className="texto-destaque">
+              Conheça. Compare. Escolha.
+            </span>
+          </div>
+          
+          <div className="barra-filtros">
+            <button
+              className={`filtro ${somenteMelhores ? "filtro-ativo" : ""}`}
+              onClick={() => setSomenteMelhores(!somenteMelhores)}
+              aria-pressed={somenteMelhores}
+            >
+              ★ Nota 4,8 ou mais
+            </button>
+            <button
+              className={`filtro ${
+                somenteFavoritos ? "filtro-ativo" : ""
+              }`}
+              onClick={() => setSomenteFavoritos(!somenteFavoritos)}
+              aria-pressed={somenteFavoritos}
+            >
+              ♡ Meus favoritos
+            </button>
+            <button className="filtro" onClick={limparFiltros}>
+              Limpar filtros
+            </button>
+            <select
+              className="ordenacao"
+              aria-label="Ordenar profissionais"
+              value={ordenacao}
+              onChange={(evento) => setOrdenacao(evento.target.value)}
+            >
+              <option value="avaliacao">Melhor avaliação</option>
+              <option value="preco">Menor valor de referência</option>
+              <option value="nome">Nome: A–Z</option>
+            </select>
+          </div>
+
+          <div className="grade-profissionais">
+            {listaFiltrada.map((prestador) => (
+              <CardPrestador
+                key={prestador.id}
+                prestador={prestador}
+                favorito={favoritos.includes(prestador.id)}
+                aoFavoritar={() => alternarFavorito(prestador.id)}
+                aoAbrir={() => abrirPerfil(prestador)}
+              />
+            ))}
+            
+            {listaFiltrada.length === 0 && (
+              <div className="estado-vazio">
+                <span>⌕</span>
+                <h3>Nenhum profissional encontrado</h3>
+                <p>
+                  Tente outra categoria ou região. Há exemplos em
+                  Paulínia e Campinas.
+                </p>
+
+                <button
+                  className="botao botao-principal"
+                  onClick={limparFiltros}
+                >
+                  Limpar filtros
+                </button>
+              </div>
+            )}
+          </div>
+
+          <p className="aviso-precos">
+            Valores de referência: o preço final deve ser combinado
+            diretamente com o prestador. Serviços com unidades
+            diferentes não são diretamente comparáveis.
+          </p>
+        </section>
+
+        <BannerPrestador
+          abrirCadastro={abrirCadastro}
+        />
+      </main>
+
+      <Rodape/>
+
+      <JanelaFormulario
+        modal={modal}
+        dialogRef={dialogRef}
+        cadastroDemonstrado={cadastroDemonstrado}
+        tipoCadastro={tipoCadastro}
+        setModal={setModal}
+        profissionalSelecionado={profissionalSelecionado}
+        mostrarContato={mostrarContato}
+        setMostrarContato={setMostrarContato}
+      />
+    </>
+  );
+}
+export default App;

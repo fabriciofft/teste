@@ -1,0 +1,44 @@
+
+.rodape {
+  max-width: 1144px;
+  margin: 0 auto;
+  padding: 24px 0;
+  border-top: 1px solid var(--cor-borda);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.rodape .logo {
+  font-size: 21px;
+}
+
+.rodape .logo-ponto {
+  font-size: 27px;
+}
+
+.rodape p {
+  margin: 0;
+  color: var(--cor-secundaria);
+  font-size: 11px;
+}
+
+@media (max-width: 1200px) {
+   .rodape { margin-inline: 28px; } 
+}
+
+@media (max-width: 1000px) {
+  .rodape {
+    margin: 0 28px;
+  }
+}
+
+@media (max-width: 650px) {
+  .rodape {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 18px;
+  }
+}

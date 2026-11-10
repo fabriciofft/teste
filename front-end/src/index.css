@@ -1,0 +1,85 @@
+:root {
+  --cor-principal: #ff2800;
+  --cor-principal-escura: #cc2000;
+  --cor-secundaria: #625b57;
+  --cor-texto: #292321;
+  --cor-fundo: #fffaf5;
+  --cor-branca: #ffffff;
+  --cor-borda: #e8ded5;
+  --cor-suave: #fff0e9;
+  --cor-avaliacao: #946200;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: .18px;
+  color-scheme: light;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*Classes globais*/
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 22px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.botao:hover {
+  transform: translateY(-1px);
+}
+
+.botaoPrincipal {
+  background: var(--cor-principal);
+  color: white;
+}
+
+.botaoPrincipal:hover {
+  background: var(--cor-principal-escura);
+}
+
+.botaoSuave {
+  background: var(--cor-suave);
+  color: var(--cor-principal);
+}
+
+.botaoBranco {
+  background: white;
+  color: var(--cor-principal);
+}
+
+.botaoCompleto {
+  width: 100%;
+  margin-top: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: var(--cor-fundo); }
+#root { width: 100%; min-height: 100svh; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+:focus-visible { outline: 3px solid var(--cor-principal-escura); outline-offset: 3px; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { color: var(--cor-texto); }
+h1 { font-weight: 800; line-height: 1.1; }
+h2 { margin: 0 0 8px; font-weight: 700; line-height: 1.18; }
+h3 { margin: 0 0 8px; font-weight: 700; line-height: 1.3; }
+p { margin: 0; }
+::selection { background: #ffddd0; color: var(--cor-texto); }
+
+@media (max-width: 1024px) { :root { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

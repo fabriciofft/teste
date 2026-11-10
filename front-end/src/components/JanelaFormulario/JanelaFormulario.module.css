@@ -1,0 +1,125 @@
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 22px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.botao:hover {
+  transform: translateY(-1px);
+}
+
+.botaoPrincipal {
+  background: var(--cor-principal);
+  color: white;
+}
+
+.botaoPrincipal:hover {
+  background: var(--cor-principal-escura);
+}
+
+.botaoCompleto {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.modal {
+  width: calc(100% - 32px);
+  max-width: 510px;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  padding: 32px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  color: var(--cor-texto);
+  box-shadow: 0 25px 90px #00000030;
+}
+
+.modal::backdrop {
+  background: #292321c2;
+}
+
+.fecharModal {
+  float: right;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: -8px -8px 12px 12px;
+  border: none;
+  border-radius: 50%;
+  background: var(--cor-suave);
+  color: var(--cor-principal);
+}
+
+.modal .sobretitulo {
+  padding-top: 4px;
+}
+
+.modal h2 {
+  margin: 17px 0 16px;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+}
+
+.modal p {
+  color: var(--cor-secundaria);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.modal .notaModal {
+  color: var(--cor-avaliacao);
+  font-size: 12px;
+}
+
+.informacaoModal {
+  margin: 20px 0;
+}
+
+.informacaoModal strong {
+  font-size: 13px;
+}
+
+.informacaoModal p {
+  margin: 6px 0 0;
+}
+
+.avisoModal {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--cor-suave);
+  color: var(--cor-principal);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.formularioCadastro {
+  display: flex;
+  flex-direction: column;
+}
+
+.formularioCadastro label {
+  margin: 17px 0 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.formularioCadastro input,
+.formularioCadastro select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background: white;
+  color: var(--cor-texto);
+}

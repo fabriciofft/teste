@@ -1,0 +1,14 @@
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--cor-principal);
+}
+
+.logoPonto {
+  font-size: 36px;
+}

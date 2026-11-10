@@ -1,0 +1,14 @@
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\config\Config.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\database\ConnectionFactory.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\database\SchemaInitializer.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\Main.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\repository\ContactRepository.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\repository\ProfileRepository.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\repository\ProviderRepository.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\repository\ReviewRepository.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\repository\SessionRepository.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\repository\UserRepository.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\server\RequestRouter.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\server\TcpServer.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\util\JsonArgs.java
+C:\Users\fabri\Downloads\backend-dados\src\main\java\br\com\quemresolve\dados\util\Responses.java

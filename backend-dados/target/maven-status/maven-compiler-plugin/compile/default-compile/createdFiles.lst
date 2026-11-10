@@ -1,0 +1,14 @@
+br\com\quemresolve\dados\repository\SessionRepository.class
+br\com\quemresolve\dados\database\SchemaInitializer.class
+br\com\quemresolve\dados\server\TcpServer.class
+br\com\quemresolve\dados\repository\ProfileRepository.class
+br\com\quemresolve\dados\config\Config.class
+br\com\quemresolve\dados\util\Responses.class
+br\com\quemresolve\dados\server\RequestRouter.class
+br\com\quemresolve\dados\database\ConnectionFactory.class
+br\com\quemresolve\dados\repository\ContactRepository.class
+br\com\quemresolve\dados\util\JsonArgs.class
+br\com\quemresolve\dados\repository\UserRepository.class
+br\com\quemresolve\dados\Main.class
+br\com\quemresolve\dados\repository\ReviewRepository.class
+br\com\quemresolve\dados\repository\ProviderRepository.class
