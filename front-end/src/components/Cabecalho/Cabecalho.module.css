@@ -66,6 +66,11 @@
   font-size: 13px;
 }
 
+.botoes{
+  margin-left: auto;
+  display: flex;
+}
+
 @media (max-width: 1000px) {
   .navegacao {
     gap: 22px;

@@ -1,0 +1,17 @@
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.margemContainer{
+  width: 90%;
+  min-height: 80vh;
+  display: flex;
+  margin: 20px 0;
+}
+
+.centralizar{
+  align-items: center;
+  justify-content: center;
+}

@@ -1,16 +1,18 @@
 package br.com.quemresolve.dados;
 
-import br.com.quemresolve.dados.config.Config;
-import br.com.quemresolve.dados.database.ConnectionFactory;
-import br.com.quemresolve.dados.database.SchemaInitializer;
-import br.com.quemresolve.dados.server.RequestRouter;
-import br.com.quemresolve.dados.server.TcpServer;
+import br.com.quemresolve.dados.configuracao.Configuracao;
+import br.com.quemresolve.dados.banco.DB;
+import br.com.quemresolve.dados.banco.InicializadorBanco;
+import br.com.quemresolve.dados.servidor.RoteadorRequisicoes;
+import br.com.quemresolve.dados.servidor.ServidorTcp;
 
 public class Main {
   public static void main(String[] args) throws Exception {
-    Config c = Config.load();
-    ConnectionFactory db = new ConnectionFactory(c);
-    new SchemaInitializer(c, db).initialize();
-    new TcpServer(c, new RequestRouter(db)).start();
+
+    Configuracao configuracao = Configuracao.carregar();
+    DB dados = new DB(configuracao);
+
+    new InicializadorBanco(configuracao, dados).inicializar();
+    new ServidorTcp(configuracao, new RoteadorRequisicoes(dados)).iniciar();
   }
 }

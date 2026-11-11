@@ -151,3 +151,64 @@
   color: var(--cor-secundaria);
   font-size: 11px;
 }
+
+@media (max-width: 1000px) {
+  .heroTexto {
+    padding: 36px 30px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .hero {
+    grid-template-columns: 1fr;
+    border-radius: 18px;
+  }
+
+  .heroTexto {
+    padding: 30px 25px;
+  }
+
+  .hero h1 {
+    font-size: 39px;
+    letter-spacing: -1.7px;
+  }
+
+  .heroTexto > p {
+    font-size: 14px;
+  }
+
+  .heroVisual {
+    min-height: 250px;
+  }
+
+  .circuloDecorativo {
+    width: 230px;
+    height: 230px;
+  }
+
+  .ilustracaoCasa {
+    max-width: 290px;
+    margin-top: -24px;
+  }
+
+  .ferramenta {
+    font-size: 40px;
+  }
+
+  .ferramentaUm {
+    top: 25px;
+    left: 25px;
+  }
+
+  .ferramentaDois {
+    top: 23px;
+    right: 28px;
+  }
+
+  .seloVisual {
+    bottom: 13px;
+    left: 17px;
+    right: 17px;
+    padding: 12px;
+  }
+}

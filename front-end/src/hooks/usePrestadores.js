@@ -3,12 +3,13 @@ import api from "../service/api";
 
 const usePrestadores = () => {
 
-  const [prestadoress, setPrestadores] = useState([]);
+  const [prestadores, setPrestadores] = useState([]);
 
   const listarPrestadores = () => {
-    api.get("/providers")
+    api.get("/prestadores")
     .then((resp) => {
-      setPrestadores(resp.data.providers);
+      console.log(resp.data)
+      setPrestadores(resp.data.prestadores);
     })
     .catch((error) => {
       console.log(error);
@@ -19,7 +20,7 @@ const usePrestadores = () => {
     listarPrestadores();
   }, []);
 
-  const prestadores = [
+  const prestadoress = [
     {
       id: 1,
       nome: "Ricardo Almeida",

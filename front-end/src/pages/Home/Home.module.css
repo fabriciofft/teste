@@ -1,0 +1,340 @@
+.conteudoPrincipal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 28px 48px;
+}
+
+/* BUSCA */
+.barraBusca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 26px 0 38px;
+  padding: 9px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 5px 20px #22272504;
+}
+
+.campoBusca {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+  min-width: 0;
+  padding: 0 16px;
+}
+
+.campoBusca > span {
+  color: var(--cor-principal);
+  font-size: 25px;
+}
+
+.campoBusca input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 0;
+  border: none;
+  background: transparent;
+  color: var(--cor-texto);
+  font-size: 14px;
+}
+
+.campoBusca input::placeholder {
+  color: var(--cor-secundaria);
+}
+
+.campoCidade {
+  flex: 0.65;
+  border-left: 1px solid var(--cor-borda);
+}
+
+/* CATEGORIAS */
+.tituloSecao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.tituloSecao h2 {
+  margin-bottom: 0;
+  font-size: 23px;
+  letter-spacing: -0.6px;
+}
+
+.tituloSecao p {
+  margin: 9px 0 0;
+  color: var(--cor-secundaria);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.listaCategorias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+  margin: 24px 0 42px;
+}
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  padding: 20px 8px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 15px;
+  background: white;
+  color: var(--cor-secundaria);
+  font-size: 12px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.categoria:hover {
+  transform: translateY(-3px);
+  border-color: var(--cor-principal);
+}
+
+.categoriaIcone {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: var(--cor-fundo);
+  font-size: 27px;
+}
+
+.categoriaAtiva {
+  border-color: var(--cor-principal);
+  background: var(--cor-suave);
+  color: var(--cor-principal);
+  font-weight: 700;
+}
+
+.categoriaAtiva .categoriaIcone {
+  background: white;
+}
+
+/* FILTROS */
+.secaoProfissionais {
+  scroll-margin-top: 24px;
+}
+
+.textoDestaque {
+  color: var(--cor-principal);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.barraFiltros {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 23px 0;
+}
+
+.filtro {
+  padding: 10px 15px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 24px;
+  background: white;
+  color: var(--cor-secundaria);
+  font-size: 12px;
+}
+
+.filtroAtivo {
+  border-color: var(--cor-principal);
+  background: var(--cor-suave);
+  color: var(--cor-principal);
+}
+
+.ordenacao {
+  margin-left: auto;
+  max-width: 100%;
+  padding: 11px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background: white;
+  color: var(--cor-texto);
+  font-size: 12px;
+}
+
+/* CARDS */
+.gradeProfissionais {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.avisoPrecos {
+  margin: 17px 0 0;
+  color: var(--cor-secundaria);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.estadoVazio {
+  grid-column: 1 / -1;
+  padding: 45px 20px;
+  border: 1px dashed var(--cor-borda);
+  border-radius: 15px;
+  background: white;
+  text-align: center;
+}
+
+.estadoVazio > span {
+  color: var(--cor-principal);
+  font-size: 40px;
+}
+
+.estadoVazio h3 {
+  margin-top: 12px;
+}
+
+.estadoVazio p {
+  color: var(--cor-secundaria);
+  font-size: 14px;
+  line-height: 1.6;
+}
+/* TABLET */
+@media (max-width: 1000px) {
+  .gradeProfissionais {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .listaCategorias {
+    gap: 9px;
+  }
+}
+
+/* CELULAR */
+
+@media (max-width: 650px) {
+  .conteudoPrincipal {
+    padding: 20px 18px 32px;
+  }
+
+  .barraBusca {
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 30px;
+  }
+
+  .campoBusca {
+    flex-basis: 100%;
+    padding: 0 12px;
+  }
+
+  .campoCidade {
+    flex: 1;
+    border-left: none;
+  }
+
+  .barraBusca .botao {
+    padding: 13px 16px;
+  }
+
+  .tituloSecao {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tituloSecao h2 {
+    font-size: 21px;
+  }
+
+  .tituloSecao p {
+    font-size: 12px;
+  }
+
+  .listaCategorias {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 4px 2px 10px;
+    margin: 20px 0 28px;
+  }
+
+  .categoria {
+    min-width: 103px;
+  }
+
+  .textoDestaque {
+    display: none;
+  }
+
+  .barraFiltros {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filtro {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+
+  .ordenacao {
+    width: 100%;
+    margin: 4px 0 0;
+  }
+
+  .gradeProfissionais {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .cardCapa {
+    height: 132px;
+  }
+
+  .cardDescricao,
+  .cardLocalizacao {
+    min-height: auto;
+  }
+
+  .bannerPrestador {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px;
+  }
+
+  .bannerPrestador h2 {
+    font-size: 23px;
+  }
+
+  .rodape {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 18px;
+  }
+
+  .modal {
+    padding: 25px;
+  }
+}
+/* Ajustes globais dos componentes */
+.bannerPrestador h2 { color: white; }
+.heroTexto, .heroVisual, .cardProfissional { min-width: 0; }
+.barraFiltros, .cardRodape { flex-wrap: wrap; }
+.botaoPrincipal, .bannerPrestador, .avatar, .favoritado { background: var(--cor-principal-escura); }
+.botaoPrincipal:hover { background: #a91b00; }
+.botao-suave, .botaoBranco, .botaoPerfil, .filtroAtivo,
+.categoriaAtiva, .sobretitulo, .heroDetalhes, .textoDestaque,
+.avisoModal, .linkAtivo { color: var(--cor-principal-escura); }
+.bannerPrestador .sobretitulo { color: white; }
+.botaoSuave:hover, .botaoBranco:hover { background: #ffddd0; }
+.estadoVazio .botao { margin-top: 20px; }
+
+@media (max-width: 1200px) { .rodape { margin-inline: 28px; } }
+@media (max-width: 650px) {
+  .navegacao { flex-wrap: wrap; gap: 12px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 39px); }
+  .categoria { flex-shrink: 0; }
+  .rodape { margin-inline: 18px; }
+  .campoBusca input, .formularioCadastro input, .formularioCadastro select { font-size: 16px; }
+}

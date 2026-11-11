@@ -1,0 +1,52 @@
+.containerMessageBox{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.33);
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.messageBox{
+  width: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.margemMessageBox{
+  width: 90%;
+  margin: 30px 0;
+}
+
+.mensagem{
+  margin:  0 0 20px 0;
+  text-align: center;
+}
+
+.mensagem p{
+  margin: 0;
+}
+
+.margemMessageBox button{
+  width: 100%;
+  background-color: var(--primaria);
+}
+
+.botao{
+  border-radius: 10px;
+  cursor: pointer;
+  height: 40px;
+  border: none;
+}
+
+
+@media screen and (max-width: 500px) {
+  .messageBox{
+    width: 90%;
+  }
+}

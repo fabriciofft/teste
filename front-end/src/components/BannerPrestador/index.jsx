@@ -1,3 +1,4 @@
+import BotaoLink from '../BotaoLink';
 import styles from './BannerPrestador.module.css';
 
 export default function BannerPrestador({abrirCadastro}){
@@ -12,12 +13,11 @@ export default function BannerPrestador({abrirCadastro}){
           da sua região.
         </p>
       </div>
-      <button
-        className={styles.botao+" "+styles["botaoBranco"]}
-        onClick={() => abrirCadastro("prestador")}
-      >
-        Quero ser prestador ↗
-      </button>
+
+      <BotaoLink
+        destino={"/cadastro"}
+        texto={"Quero ser prestador ↗"}
+      />
     </section>
   );
 }
